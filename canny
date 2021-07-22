@@ -1,0 +1,19 @@
+import cv2
+import numpy as np
+
+img=cv2.imread(r"C:\Users\AMRIX\Downloads\sea.jpg")
+img=cv2.resize(img,(300,200))
+gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+blur=cv2.GaussianBlur(gray,(5,5),0)
+canny=cv2.Canny(blur,150,150)
+imgver=np.vstack((gray,blur,canny))
+hor=np.hstack((gray,blur,canny))
+cv2.imshow("hor",hor)
+cv2.imshow("ver",imgver)
+cv2.imshow("blur",blur)
+cv2.imshow("img",img)
+cv2.imshow("gray",gray)
+cv2.imshow("canny",canny)
+
+cv2.waitKey()
+cv2.destroyAllWindows()
